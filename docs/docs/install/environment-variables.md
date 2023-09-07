@@ -56,12 +56,13 @@ These environment variables are used by the `docker-compose.yml` file and do **N
 
 ## URLs
 
-| Variable                   | Description             |           Default           | Services   |
-| :------------------------- | :---------------------- | :-------------------------: | :--------- |
-| `IMMICH_WEB_URL`           | Immich Web URL          |  `http://immich-web:3000`   | proxy      |
-| `IMMICH_SERVER_URL`        | Immich Server URL       | `http://immich-server:3001` | web, proxy |
-| `PUBLIC_IMMICH_SERVER_URL` | Public Immich URL       | `http://immich-server:3001` | web        |
-| `IMMICH_API_URL_EXTERNAL`  | Immich API URL External |           `/api`            | web        |
+| Variable                      | Description                 |                Default                | Services              |
+| :---------------------------- | :-------------------------- | :-----------------------------------: | :-------------------- |
+| `IMMICH_WEB_URL`              | Immich Web URL              |       `http://immich-web:3000`        | proxy                 |
+| `IMMICH_SERVER_URL`           | Immich Server URL           |      `http://immich-server:3001`      | web, proxy            |
+| `IMMICH_MACHINE_LEARNING_URL` | Immich Machine Learning URL | `http://immich-machine-learning:3003` | server, microservices |
+| `PUBLIC_IMMICH_SERVER_URL`    | Public Immich URL           |      `http://immich-server:3001`      | web                   |
+| `IMMICH_API_URL_EXTERNAL`     | Immich API URL External     |                `/api`                 | web                   |
 
 :::info
 
@@ -177,13 +178,14 @@ Typesense URL example JSON before encoding:
 
 ## Machine Learning
 
-| Variable                                         | Description                                |       Default       | Services         |
-| :----------------------------------------------- | :----------------------------------------- | :-----------------: | :--------------- |
-| `MACHINE_LEARNING_MODEL_TTL`                     | Model TTL                                  |        `300`        | machine learning |
-| `MACHINE_LEARNING_CACHE_FOLDER`                  | ML Cache Location                          |      `/cache`       | machine learning |
-| `MACHINE_LEARNING_REQUEST_THREADS`<sup>\*1</sup> | Request thread pool size                   | number of CPU cores | machine learning |
-| `MACHINE_LEARNING_MODEL_INTER_OP_THREADS`        | Number of parallel model operations        |         `1`         | machine learning |
-| `MACHINE_LEARNING_MODEL_INTRA_OP_THREADS`        | Number of threads for each model operation |         `2`         | machine learning |
+| Variable                                         | Description                                |       Default       | Services              |
+| :----------------------------------------------- | :----------------------------------------- | :-----------------: | :-------------------- |
+| `IMMICH_MACHINE_LEARNING_ENABLED`                | Enable machine learning                    |       `true`        | server, microservices |
+| `MACHINE_LEARNING_MODEL_TTL`                     | Model TTL                                  |        `300`        | machine learning      |
+| `MACHINE_LEARNING_CACHE_FOLDER`                  | ML Cache Location                          |      `/cache`       | machine learning      |
+| `MACHINE_LEARNING_REQUEST_THREADS`<sup>\*1</sup> | Request thread pool size                   | number of CPU cores | machine learning      |
+| `MACHINE_LEARNING_MODEL_INTER_OP_THREADS`        | Number of parallel model operations        |         `1`         | machine learning      |
+| `MACHINE_LEARNING_MODEL_INTRA_OP_THREADS`        | Number of threads for each model operation |         `2`         | machine learning      |
 
 \*1: It is recommended to begin with this parameter when changing the concurrency levels of the machine learning service and then tune the other ones.
 
